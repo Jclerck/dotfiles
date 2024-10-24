@@ -36,7 +36,7 @@ links=(
     'https://kaleidoscope.app/download'
     'https://soma-zone.com/LaunchControl/'
     'https://opalcamera.com/opal-composer/download'
-    'https://parallels.com/products/desktop/'
+    'https://parallels.com/products/desktop/welcome/'
     'https://getpixelsnap.com'
     'https://polypane.app/download/'
     'https://github.com/SAP/power-monitoring-tool-for-macos/releases'
