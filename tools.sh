@@ -23,7 +23,7 @@ completions=(
     'eval "$(deno completions zsh)"; compdef _deno deno'
     'eval "$(gh completion -s zsh)"; compdef _gh gh'
     'eval "$(/opt/homebrew/bin/brew shellenv)"'
-    'fpath=("$(brew --prefix)/share/zsh/site-functions" $fpath)'
+    ''
 )
 links=(
     'https://developer.1password.com/docs/cli/get-started/#step-1-install-1password-cli'
