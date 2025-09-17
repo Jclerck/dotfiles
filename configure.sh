@@ -46,31 +46,6 @@ npm-debug.log*\n
 yarn-debug.log*\n
 yarn-error.log*"
 
-plist="
-<?xml version="1.0" encoding="UTF-8"?>\n
-<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n
-<plist version="1.0">\n
-<dict>\n
-        <key>Label</key>\n
-        <string>is.edil.reset-launchpad</string>\n
-        <key>ProgramArguments</key>\n
-        <array>\n
-                <string>/usr/local/bin/fdautil</string>\n
-                <string>exec</string>\n
-                <string>/bin/zsh</string>\n
-                <string>$HOME/Documents/GitHub/dotfiles/scripts/reset-launchpad.sh</string>\n
-        </array>\n
-        <key>RunAtLoad</key>\n
-        <true/>\n
-        <key>LaunchOnlyOnce</key>\n
-        <true/>\n
-        <key>StandardErrorPath</key>\n
-        <string>/tmp/is.edil.reset-launchpad.err</string>\n
-        <key>StandardOutPath</key>\n
-        <string>/tmp/is.edil.reset-launchpad.out</string>\n
-</dict>\n
-</plist>"
-
 PS3='Configure git ignore: '
 select answer in "Yes" "No"; do
     case $answer in
@@ -80,25 +55,6 @@ select answer in "Yes" "No"; do
                 touch "$HOME/.config/git/ignore"
             fi
             echo $git | sed 's/^ *//g' > "$HOME/.config/git/ignore"
-            break;;
-        'No') break;;
-    esac
-done
-
-PS3='Configure launchpad reset: '
-select answer in "Yes" "No"; do
-    case $answer in
-        'Yes')
-            if [[ ! -e "$HOME/Library/LaunchAgents/is.edil.reset-launchpad.plist" ]]; then
-                mkdir -p "$HOME/Library/LaunchAgents/"
-                touch "$HOME/Library/LaunchAgents/is.edil.reset-launchpad.plist"
-            fi
-            if [[ -e "/usr/local/bin/fdautil" ]]; then
-                sudo /usr/local/bin/fdautil set agent is.edil.reset-launchpad $HOME/Documents/GitHub/dotfiles/scripts/reset-launchpad.sh
-            else
-                echo "fdautil not found, once fdautil is installed run the following command:\n\n$ sudo /usr/local/bin/fdautil set agent is.edil.reset-launchpad $HOME/Documents/GitHub/dotfiles/scripts/reset-launchpad.sh\n\nor configure fdautil through LaunchControl"
-            fi
-            echo $plist | sed 's/^ *//g' > "$HOME/Library/LaunchAgents/is.edil.reset-launchpad.plist"
             break;;
         'No') break;;
     esac
